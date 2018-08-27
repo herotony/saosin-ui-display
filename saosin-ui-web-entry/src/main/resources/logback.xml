@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- <property resource="app.properties" /> -->
+    <property name="pattern.category" value="%c{2}"/>
+
+    <appender name="default-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/default/default.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.home}/default/default.log.%d{yyyyMMddHH}</fileNamePattern>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d [%t] %-5p ${pattern.category} - [%m]%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="notifymessage-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/notifymessage/notifymessage.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.home}/notifymessage/notifymessage.log.%d{yyyyMMddHH}</fileNamePattern>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d [%t] %-5p ${pattern.category} - [%m]%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="refund-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/refund/refund.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.home}/refund/refund.log.%d{yyyyMMddHH}</fileNamePattern>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d [%t] %-5p ${pattern.category} - [%m]%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="query-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/querypaystatus/query.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.home}/querypaystatus/query.log.%d{yyyyMMddHH}</fileNamePattern>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d [%t] %-5p ${pattern.category} - [%m]%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="timeout-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/timeout/timeout.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.home}/timeout/timeout.log.%d{yyyyMMddHH}</fileNamePattern>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d [%t] %-5p ${pattern.category} - [%m]%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="error-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/error/error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.home}/error/error.log.%d{yyyyMMddHH}</fileNamePattern>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d [%t] %-5p ${pattern.category} - [%m]%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="monitor-method-appender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/monitormethodtime/monitor-method-time.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.home}/monitormethodtime/monitor-method-time.log.%d{yyyyMMddHH}</fileNamePattern>
+        </rollingPolicy>
+        <encoder charset="UTF-8">
+            <pattern>%d [%t] %-5p ${pattern.category} - [%m]%n</pattern>
+        </encoder>
+    </appender>
+    <logger name="monitorMethodLogger" additivity="false">
+        <level value="${log.level}"/>
+        <appender-ref ref="monitor-method-appender"/>
+    </logger>
+    <logger name="NOTIFYSERVER.LOG" additivity="false">
+        <level value="${log.level}"/>
+        <appender-ref ref="notifymessage-appender"/>
+    </logger>
+    <logger name="TIMEOUT.LOG" additivity="false">
+        <level value="${log.level}"/>
+        <appender-ref ref="timeout-appender"/>
+    </logger>
+    <logger name="ERROR.LOG" additivity="false">
+        <level value="${log.level}"/>
+        <appender-ref ref="error-appender"/>
+    </logger>
+    <logger name="REFUND.LOG" additivity="false">
+        <level value="${log.level}" />
+        <appender-ref ref="refund-appender" />
+    </logger>
+    <logger name="QUERY.LOG" additivity="false">
+        <level value="${log.level}" />
+        <appender-ref ref="query-appender" />
+    </logger>
+
+    <root level="${log.level}">
+        <appender-ref ref="default-appender"/>
+    </root>
+
+</configuration>
